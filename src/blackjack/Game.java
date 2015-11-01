@@ -4,7 +4,6 @@ package blackjack;
  *
  * @author
  */
-import java.util.*;
 
 public class Game {
 
@@ -45,6 +44,7 @@ public class Game {
 
     /**
      * set current player
+     * @param index
      */
     public void setCurrentPlayer(int index) {
         this.player = this.players[index];
@@ -104,6 +104,7 @@ public class Game {
      * player. we check the result, if player is not busted, we check for the
      * dealer, if he wanted to hit, if not then we compute the winner String
      * move
+     * @param m
      */
     public void move(String m) {
         if (m.equalsIgnoreCase("H")) {
@@ -130,6 +131,7 @@ public class Game {
 
     /**
      * function to check winner.
+     * @return 
      */
     public boolean checkWinner() {
         if (this.isBusted(this.player.getHand())) {
@@ -152,10 +154,7 @@ public class Game {
     }
 
     public boolean isBlackJack(Hand hand) {
-        if (hand.getValue() == 21) {
-            return true;
-        }
-        return false;
+        return hand.getValue() == 21;
     }
 
     /**
@@ -165,10 +164,6 @@ public class Game {
      * @return true if busted > 21
      */
     public boolean isBusted(Hand hand) {
-        if (hand.getValue() > 21) {
-            return true;
-        } else {
-            return false;
-        }
+        return hand.getValue() > 21;
     }
 }
